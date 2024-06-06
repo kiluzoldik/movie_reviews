@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="card">
+  <!-- Добавляем изображение фильма -->
+  <img src="{{ url_for('static', filename=movie.photo) }}" class="card-img-top" alt="{{ movie.title }}">
+  
+  <div class="card-body">
+    <h5 class="card-title">{{ movie.title }}</h5>
+    <p class="card-text">{{ movie.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Год выпуска: {{ movie.year }}</li>
+    <li class="list-group-item">Страна: {{ movie.country }}</li>
+    <li class="list-group-item">Жанры: {{ movie.genres }}</li>
+    <li class="list-group-item">Режиссер: {{ movie.director }}</li>
+    <li class="list-group-item">Рейтинг: {{ movie.rating }}</li>
+    <li class="list-group-item">Длительность: {{ movie.duration }}</li>
+  </ul>
+</div>
+
+<!-- Выводим рецензии на данный фильм -->
+<h3 class="mt-4">Рецензии</h3>
+{% for review in movie.reviews %}
+<div class="card mt-2">
+  <div class="card-body">
+    <h5 class="card-title">{{ review.author.username }}</h5>
+    <p class="card-text">{{ review.content }}</p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
