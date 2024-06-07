@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+
+{% block title %}{{ category_title }} - Movie Reviews{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ category_title }}</h1>
+    <div class="row mb-3">
+        <div class="col-12">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Сортировка
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{{ url_for('category', category=category, sort='newest') }}">От новых к старым</a>
+                    <a class="dropdown-item" href="{{ url_for('category', category=category, sort='oldest') }}">От старых к новым</a>
+                    <a class="dropdown-item" href="{{ url_for('category', category=category, sort='rating') }}">По рейтингу</a>
+                    <a class="dropdown-item" href="{{ url_for('category', category=category, sort='reviews') }}">По количеству оценок</a>
+                    <a class="dropdown-item" href="{{ url_for('category', category=category, sort='title') }}">По названию</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for movie in movies %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm h-100">
+                <img src="{{ url_for('static', filename=movie.photo) }}" class="card-img-top" alt="{{ movie.title }}">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">
+                        Год выпуска: {{ movie.year }}<br>
+                        Длительность: {{ movie.duration }}<br>
+                        Страна выпуска: {{ movie.country }}<br>
+                        Жанры: {{ movie.genres }}<br>
+                        Рейтинг: {{ movie.rating }}<br>
+                        Количество оценок: {{ movie.reviews|length }}
+                    </p>
+                    <a href="{{ url_for('movie', movie_id=movie.id) }}" class="btn btn-primary mt-auto">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

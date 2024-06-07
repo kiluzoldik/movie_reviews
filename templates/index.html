@@ -1,11 +1,65 @@
 {% extends 'main.html' %}
 
+{% block title %}Главная - Movie Reviews{% endblock %}
+
 {% block content %}
-<div class="jumbotron">
-  <h1 class="display-4">Добро пожаловать!</h1>
-  <p class="lead">На нашем сайте вы можете найти обзоры на последние фильмы и сериалы.</p>
-  <hr class="my-4">
-  <p>Подборки:</p>
-  <!-- Здесь список подборок -->
+<div class="container-fluid mt-4 bg-image">
+    <div class="overlay">
+        <div class="container py-5">
+            <h1 class="mb-4 text-center text-white">Топ фильмов</h1>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for movie in top_movies %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ url_for('static', filename=movie.photo) }}" class="card-img-top fixed-img" alt="{{ movie.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ movie.title }}</h5>
+                            <p class="card-text">
+                                Год выпуска: {{ movie.year }}<br>
+                                Длительность: {{ movie.duration }}<br>
+                                Страна выпуска: {{ movie.country }}<br>
+                                Жанры: {{ movie.genres }}<br>
+                                Рейтинг: {{ movie.rating }}<br>
+                                Количество оценок: {{ movie.reviews|length }}
+                            </p>
+                            <a href="{{ url_for('movie', movie_id=movie.id) }}" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ url_for('category', category='top') }}" class="btn btn-secondary">Смотреть все</a>
+            </div>
+        </div>
+
+        <div class="container py-5">
+            <h1 class="mb-4 text-center text-white">Популярные фильмы</h1>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for movie in popular_movies %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{ url_for('static', filename=movie.photo) }}" class="card-img-top fixed-img" alt="{{ movie.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ movie.title }}</h5>
+                            <p class="card-text">
+                                Год выпуска: {{ movie.year }}<br>
+                                Длительность: {{ movie.duration }}<br>
+                                Страна выпуска: {{ movie.country }}<br>
+                                Жанры: {{ movie.genres }}<br>
+                                Рейтинг: {{ movie.rating }}<br>
+                                Количество оценок: {{ movie.reviews|length }}
+                            </p>
+                            <a href="{{ url_for('movie', movie_id=movie.id) }}" class="btn btn-primary">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-4">
+                <a href="{{ url_for('category', category='popular') }}" class="btn btn-secondary">Смотреть все</a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,0 +1,71 @@
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex: 1;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 300px;
+}
+
+.card .btn {
+    align-self: flex-end;
+}
+
+body.bg-image {
+    background-image: url('https://images.wallpaperscraft.ru/image/single/kinoteatr_kresla_temnyj_159821_1920x1080.jpg');
+    background-size: cover;
+    background-position: center;
+    color: rgb(224, 174, 174); /* Установить белый цвет текста по умолчанию */
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* Черный фон с прозрачностью */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.text-white {
+    color: rgba(151, 126, 126, 0.8);
+}
+
+.fixed-img {
+    height: 200px; /* Фиксированная высота для изображений */
+    object-fit: cover; /* Изображение покрывает контейнер */
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 20px;
+    background-color: rgba(151, 126, 126, 0.8); /* Светлый фон с прозрачностью для текста в карточке */
+}
+
+/* Стили для навигационного меню */
+.navbar-custom {
+    background-color: #343a40; /* Замените этот цвет на тот, который вам нужен */
+    border-bottom: 2px solid #495057; /* Дополнительная стилизация, например, нижняя граница */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: white; /* Цвет текста и ссылок в навигации */
+}
+
+.navbar-custom .nav-link:hover {
+    color: #d3d3d3; /* Цвет текста и ссылок при наведении */
+}
+
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1); /* Цвет границы для кнопки-toggler */
+}
+
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Цвет иконки-toggler */
+}
